@@ -3,47 +3,66 @@
 
 <input type="range"/>
   
-<div class="slidecontainer">
-  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-</div>
+<div class="range">
+      <input type="range" min="0" max="100" value="0" id="range2" class="range-input" /> 
+      <div class="value2">0</div>
+    </div>
 
-  .slider {
+.range-input {
   -webkit-appearance: none;
+  appearance: none; 
   width: 100%;
-  height: 15px;
-  border-radius: 5px;  
-  background: #d3d3d3;
+  cursor: pointer;
   outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  border-radius: 15px;
+  height: 6px;
+  background: #ccc;
 }
 
-.slider::-webkit-slider-thumb {
+.range-input::-webkit-slider-thumb {
   -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%; 
-  background: #04AA6D;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
+  appearance: none; 
+  height: 15px;
+  width: 15px;
+  background-color: #f50;
   border-radius: 50%;
-  background: #04AA6D;
-  cursor: pointer;
+  border: none;
+  transition: .2s ease-in-out;
 }
 
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-  output.innerHTML = this.value;
+.range-input::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  background-color: #f50;
+  border-radius: 50%;
+  border: none;
+  transition: .2s ease-in-out;
 }
 
+.range-input::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 10px rgba(255,85,0, .1)
+}
+.range-input:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba(255,85,0, .2)
+}
+.range-input:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba(255,85,0, .2)
+}
+
+.range-input::-moz-range-thumb:hover {
+  box-shadow: 0 0 0 10px rgba(255,85,0, .1)
+}
+.range-input:active::-moz-range-thumb {
+  box-shadow: 0 0 0 13px rgba(255,85,0, .2)
+}
+.range-input:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 13px rgba(255,85,0, .2)    
+}
+
+.value2, .value3, .value4 {
+  font-size: 26px;    
+  width: 50px;
+  text-align: center;
+}
+  
 </html>
