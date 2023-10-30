@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<head>
+    <!-- ]<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+</head>
 <html lang="en">
 
  <div id="stage-container">
@@ -43,7 +49,7 @@ html, body {
 
 #slider-inner {
   fill: transparent;
-  //stroke: #ccc;  
+  /*stroke: #ccc;*/
   stroke: transparent;
 }
 
@@ -73,10 +79,10 @@ html, body {
 }*/
 
 </style>
-  
+
 <script>
 TweenLite.selector = $$;
-
+console.log(TweenLite.selector)
 var progress = 0;
 
 var speed  = 1500;
@@ -124,9 +130,9 @@ updateSlider();
 window.addEventListener("resize", resize);
 
 function onPress() {
-    
+  
   var x  = this.pointerX - offset.left;
-  var tx = handle.inner._gsTransform.x;
+  var tx = gsap.getProperty(handle.inner,'x');
   var dx = tx - x + this.x + radius;  
   var dt = Math.abs(dx) / speed;
       
@@ -139,8 +145,8 @@ function onPress() {
 }
 
 function updateSlider(event, animating) {
-  
-  progress = handle.group._gsTransform.x / bounds.width;
+  x = gsap.getProperty(handle.group, "x");
+  progress = x / bounds.width;
   progress = progress < 0 ? 0 : (progress > 1 ? 1 : progress);
   value.textContent = Math.round(progress * 100);
     
